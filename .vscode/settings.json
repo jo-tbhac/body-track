@@ -9,5 +9,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.tabSize": 2,
     "editor.insertSpaces": true
-  }
+  },
+  "cSpell.enabled": true,
+  "cSpell.import": ["${workspaceFolder}/.cspell/cspell.json"]
 }
