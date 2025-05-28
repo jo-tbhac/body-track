@@ -9,12 +9,12 @@ import {
   NotoSansJP_800ExtraBold,
   NotoSansJP_900Black,
   useFonts,
-} from "@expo-google-fonts/noto-sans-jp";
-import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
-import { Text, View } from "react-native";
+} from "@expo-google-fonts/noto-sans-jp"
+import * as SplashScreen from "expo-splash-screen"
+import { useEffect } from "react"
+import { Text, View } from "react-native"
 
-SplashScreen.preventAutoHideAsync();
+SplashScreen.preventAutoHideAsync()
 
 export default function Index() {
   const [loaded, error] = useFonts({
@@ -27,22 +27,22 @@ export default function Index() {
     NotoSansJP_700: NotoSansJP_700Bold,
     NotoSansJP_800: NotoSansJP_800ExtraBold,
     NotoSansJP_900: NotoSansJP_900Black,
-  });
+  })
 
   useEffect(() => {
     if (loaded) {
-      SplashScreen.hideAsync();
+      SplashScreen.hideAsync()
     }
-  }, [loaded]);
+  }, [loaded])
 
   useEffect(() => {
     if (error) {
-      console.error("[Error] failed to load fonts: ", error);
+      console.error("[Error] failed to load fonts: ", error)
     }
-  }, [error]);
+  }, [error])
 
   if (!loaded) {
-    return null;
+    return null
   }
 
   return (
@@ -61,5 +61,5 @@ export default function Index() {
         Edit app/index.tsx to edit this screen1.
       </Text>
     </View>
-  );
+  )
 }
