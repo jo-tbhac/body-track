@@ -1,7 +1,5 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit",
-    "source.organizeImports": "explicit",
     "source.sortMembers": "explicit"
   },
   "[typescript][typescriptreact][javascript][json]": {
@@ -11,5 +9,6 @@
     "editor.insertSpaces": true
   },
   "cSpell.enabled": true,
-  "cSpell.import": ["${workspaceFolder}/.cspell/cspell.json"]
+  "cSpell.import": ["${workspaceFolder}/.cspell/cspell.json"],
+  "eslint.runtime": "node"
 }
