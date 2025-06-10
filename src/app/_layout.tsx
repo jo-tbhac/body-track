@@ -1,5 +1,30 @@
-import { Stack } from "expo-router"
+import { useFonts } from "@expo-google-fonts/noto-sans-jp"
+import * as SplashScreen from "expo-splash-screen"
+import { useEffect } from "react"
+import { Slot } from "expo-router"
+
+import { fontMap } from "@/styles/font"
+
+SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
-  return <Stack />
+  const [loaded, error] = useFonts(fontMap)
+
+  useEffect(() => {
+    if (loaded) {
+      SplashScreen.hideAsync()
+    }
+  }, [loaded])
+
+  useEffect(() => {
+    if (error) {
+      console.error("[Error] failed to load fonts: ", error)
+    }
+  }, [error])
+
+  if (!loaded) {
+    return null
+  }
+
+  return <Slot />
 }
