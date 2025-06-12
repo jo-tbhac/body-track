@@ -11,7 +11,9 @@
     "lint": "expo lint",
     "format:check": "prettier . --check",
     "format:fix": "prettier . --write",
-    "cspell": "cspell -c ./.cspell/cspell.json ."
+    "cspell": "cspell -c ./.cspell/cspell.json .",
+    "tsc:lib:eslint": "tsc --project ./lib/eslint/tsconfig.eslint.json",
+    "test:lib:eslint": "node --experimental-strip-types --import ./lib/eslint/setup-test.js --test **/*.test.ts"
   },
   "dependencies": {
     "@expo-google-fonts/noto-sans-jp": "^0.4.0",
