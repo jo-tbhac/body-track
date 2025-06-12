@@ -3,6 +3,7 @@ import { Slot } from "expo-router"
 import * as SplashScreen from "expo-splash-screen"
 import { useEffect } from "react"
 
+import { ThemeProvider } from "@/styles/ThemeProvider"
 import { fontMap } from "@/styles/font"
 
 SplashScreen.preventAutoHideAsync()
@@ -26,5 +27,9 @@ export default function RootLayout() {
     return null
   }
 
-  return <Slot />
+  return (
+    <ThemeProvider>
+      <Slot />
+    </ThemeProvider>
+  )
 }
