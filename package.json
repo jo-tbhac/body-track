@@ -13,7 +13,8 @@
     "format:fix": "prettier . --write",
     "cspell": "cspell -c ./.cspell/cspell.json .",
     "tsc:lib:eslint": "tsc --project ./lib/eslint/tsconfig.eslint.json",
-    "test:lib:eslint": "node --experimental-strip-types --import ./lib/eslint/setup-test.js --test **/*.test.ts"
+    "test:lib:eslint": "node --experimental-strip-types --import ./lib/eslint/setup-test.js --test **/*.test.ts",
+    "scaffdog:g": "scaffdog generate"
   },
   "dependencies": {
     "@expo-google-fonts/noto-sans-jp": "^0.4.0",
@@ -54,6 +55,7 @@
     "eslint-config-expo": "~9.2.0",
     "eslint-config-prettier": "^10.1.5",
     "prettier": "3.5.3",
+    "scaffdog": "^4.1.0",
     "typescript": "~5.8.3"
   },
   "private": true,
