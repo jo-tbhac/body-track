@@ -1,6 +1,7 @@
-import { Text, ViewStyle } from "react-native"
+import { ViewStyle } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 
+import { Typography } from "@/components/Typography"
 import { createStyleSheet } from "@/styles/theme"
 
 export default function GraphScreen() {
@@ -8,7 +9,7 @@ export default function GraphScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text>GraphScreen</Text>
+      <Typography>GraphScreen</Typography>
     </SafeAreaView>
   )
 }

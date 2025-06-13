@@ -1,6 +1,7 @@
-import { Text, ViewStyle } from "react-native"
+import { ViewStyle } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 
+import { Typography } from "@/components/Typography"
 import { createStyleSheet } from "@/styles/theme"
 
 export default function HomeScreen() {
@@ -8,7 +9,7 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text>HomeScreen</Text>
+      <Typography>1.HomeScreen</Typography>
     </SafeAreaView>
   )
 }

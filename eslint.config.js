@@ -9,6 +9,20 @@ module.exports = defineConfig([
   eslintConfigPrettier,
   {
     ignores: ["dist/*", "lib/*"],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          paths: [
+            {
+              name: "react-native",
+              importNames: ["Text"],
+              message: "Please use 'Typography' instead.",
+            },
+          ],
+        },
+      ],
+    },
     // plugins: { localRules: eslintPluginLocalRules },
     // rules: {
     //   "localRules/example": "error",

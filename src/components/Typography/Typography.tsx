@@ -1,4 +1,5 @@
 import { FC, useMemo } from "react"
+// eslint-disable-next-line no-restricted-imports
 import { StyleSheet, Text, TextProps, TextStyle } from "react-native"
 
 import { createStyleSheet } from "@/styles/theme"
