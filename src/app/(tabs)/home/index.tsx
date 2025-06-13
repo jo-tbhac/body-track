@@ -1,9 +1,23 @@
-import { Text, View } from "react-native"
+import { Text, ViewStyle } from "react-native"
+import { SafeAreaView } from "react-native-safe-area-context"
+
+import { createStyleSheet } from "@/styles/theme"
 
 export default function HomeScreen() {
+  const styles = useStyles()
+
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    <SafeAreaView style={styles.container}>
       <Text>HomeScreen</Text>
-    </View>
+    </SafeAreaView>
   )
 }
+
+const useStyles = createStyleSheet((theme) => ({
+  container: {
+    alignItems: "center",
+    backgroundColor: theme.colors.background.primary,
+    flex: 1,
+    justifyContent: "center",
+  } satisfies ViewStyle,
+}))
