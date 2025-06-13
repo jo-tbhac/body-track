@@ -1,3 +1,4 @@
 bodytrack
+Entypo
 noto
 TSESTree
