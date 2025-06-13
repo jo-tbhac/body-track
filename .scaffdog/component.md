@@ -30,3 +30,10 @@ const useStyles = createStyleSheet((theme) => ({
 }))
 
 ```
+
+# `{{ inputs.name | pascal }}/index.ts`
+
+```typescript
+export * from "./{{ inputs.name | pascal }}"
+
+```
