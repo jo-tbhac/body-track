@@ -2,13 +2,13 @@ import { createContext, useContext, useMemo } from "react"
 import { StyleSheet } from "react-native"
 
 import { COLORS } from "./colors"
-import { FONT_FAMILY, FONT_WEIGHT } from "./font"
+import { FONT_FAMILY, FONT_SIZE } from "./font"
 import { SPACING } from "./spacing"
 
 export const defaultTheme = {
   colors: COLORS,
   fontFamily: FONT_FAMILY,
-  fontWeight: FONT_WEIGHT,
+  fontSize: FONT_SIZE,
   spacing: SPACING,
 } as const
 

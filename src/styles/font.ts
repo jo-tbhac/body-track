@@ -36,7 +36,7 @@ export const fontMap: Record<FontFamily, number> = {
   NotoSansJP_900: NotoSansJP_900Black,
 }
 
-export const FONT_WEIGHT = {
+export const FONT_SIZE = {
   xs: 10,
   sm: 12,
   base: 14,
@@ -49,4 +49,4 @@ export const FONT_WEIGHT = {
   "6xl": 48,
 } as const
 
-export type FontWeight = (typeof FONT_WEIGHT)[keyof typeof FONT_WEIGHT]
+export type FontSize = (typeof FONT_SIZE)[keyof typeof FONT_SIZE]
