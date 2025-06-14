@@ -1,11 +1,14 @@
 import { createContext, useContext, useMemo } from "react"
 import { StyleSheet } from "react-native"
 
+import { BORDER_RADIUS, BORDER_WIDTH } from "./border"
 import { COLORS } from "./colors"
 import { FONT_FAMILY, FONT_SIZE } from "./font"
 import { SPACING } from "./spacing"
 
 export const defaultTheme = {
+  borderRadius: BORDER_RADIUS,
+  borderWidth: BORDER_WIDTH,
   colors: COLORS,
   fontFamily: FONT_FAMILY,
   fontSize: FONT_SIZE,
