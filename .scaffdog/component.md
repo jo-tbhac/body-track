@@ -11,7 +11,7 @@ questions:
 
 ```typescript
 import { FC } from "react"
-import { View } from "react-native"
+import { View, ViewStyle } from "react-native"
 
 import { createStyleSheet } from "@/styles/theme"
 
@@ -26,7 +26,7 @@ export const {{ inputs.name | pascal }}: FC<Props> = () => {
 const useStyles = createStyleSheet((theme) => ({
   container: {
     backgroundColor: theme.colors.background.primary,
-  },
+  } satisfies ViewStyle,
 }))
 
 ```
