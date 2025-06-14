@@ -1,7 +1,7 @@
 import { ViewStyle } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 
-import { Typography } from "@/components/Typography"
+import { Typography } from "@/components/atoms/Typography"
 import { createStyleSheet } from "@/styles/theme"
 
 export default function GraphScreen() {
