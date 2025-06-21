@@ -21,7 +21,7 @@ export const WeightEntry: FC<Props> = ({ label, weight, bodyFatRate, bmi }) => {
         <Typography style={styles.label}>{label}</Typography>
         <Typography bold style={styles.weight}>
           {weight}{" "}
-          <Typography bold style={styles.weightSuffix}>
+          <Typography bold style={styles.weightUnit}>
             kg
           </Typography>
         </Typography>
@@ -53,7 +53,7 @@ const useStyles = createStyleSheet((theme) => ({
     color: theme.colors.text.inverse,
     fontSize: theme.fontSize["2xl"],
   } satisfies TextStyle,
-  weightSuffix: {
+  weightUnit: {
     color: theme.colors.text.inverse,
     fontSize: theme.fontSize.base,
   } satisfies TextStyle,
