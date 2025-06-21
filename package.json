@@ -14,7 +14,7 @@
     "cspell": "cspell -c ./.cspell/cspell.json .",
     "tsc:lib:eslint": "tsc --project ./lib/eslint/tsconfig.eslint.json",
     "test:lib:eslint": "node --experimental-strip-types --import ./lib/eslint/setup-test.js --test **/*.test.ts",
-    "scaffdog:g": "scaffdog generate"
+    "scaffdog:gen": "scaffdog generate"
   },
   "dependencies": {
     "@expo-google-fonts/noto-sans-jp": "^0.4.0",
