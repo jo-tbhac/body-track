@@ -11,7 +11,7 @@ export const DailyRecordCard: FC = () => {
   const styles = useStyles()
 
   return (
-    <Card gradient={[colors.accent.blue[500], colors.accent.purple[500]]}>
+    <Card gradient={[colors.primary[500], colors.accent.amber[600]]}>
       <View style={styles.cardTop}>
         <Typography bold style={styles.cardTitle}>
           XX月XX日（X）の記録
