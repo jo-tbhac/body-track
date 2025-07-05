@@ -6,7 +6,7 @@ import { PERIOD } from "@/constants"
 import { createStyleSheet } from "@/styles/theme"
 import { Period } from "@/types/period"
 
-export const GraphScreenTemplate: FC = () => {
+export const ChartScreenTemplate: FC = () => {
   const styles = useStyles()
 
   const [selectedPeriod, setSelectedPeriod] = useState<Period>(PERIOD["7days"])

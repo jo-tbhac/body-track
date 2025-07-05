@@ -23,7 +23,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="graph/index"
+        name="chart/index"
         options={{
           tabBarLabel: "グラフ",
           tabBarIcon: ({ color }) => (
