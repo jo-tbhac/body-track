@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router"
 import { FC } from "react"
 import { TextStyle, View, ViewStyle } from "react-native"
 
@@ -9,6 +10,12 @@ import { createStyleSheet, useTheme } from "@/styles/theme"
 export const DailyRecordCard: FC = () => {
   const { colors } = useTheme()
   const styles = useStyles()
+
+  const router = useRouter()
+
+  const handlePressWeightEntry = () => {
+    router.navigate("/record-input")
+  }
 
   return (
     <Card gradient={[colors.primary[500], colors.accent.amber[600]]}>
@@ -23,12 +30,14 @@ export const DailyRecordCard: FC = () => {
           weight={64.0}
           bodyFatRate={16.0}
           bmi={19.0}
+          onPress={handlePressWeightEntry}
         />
         <WeightEntry
           label="夜の体重"
           weight={64.0}
           bodyFatRate={16.0}
           bmi={19.0}
+          onPress={handlePressWeightEntry}
         />
       </View>
     </Card>
