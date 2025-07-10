@@ -17,7 +17,7 @@ interface Props {
   onPress: TouchableOpacityProps["onPress"]
 }
 
-export const PeriodButton: FC<Props> = ({
+export const ToggleButton: FC<Props> = ({
   selected,
   label,
   containerStyle: overrideContainerStyle,

@@ -16,7 +16,7 @@ interface Props {
   onPress: TouchableOpacityProps["onPress"]
 }
 
-export const SubmitButton: FC<Props> = ({
+export const Button: FC<Props> = ({
   label,
   containerStyle: overrideContainerStyle,
   onPress,

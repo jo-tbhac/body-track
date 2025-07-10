@@ -2,7 +2,7 @@ import { FC } from "react"
 import { View, ViewStyle } from "react-native"
 
 import { Card } from "@/components/atoms/Card"
-import { PeriodButton } from "@/components/atoms/PeriodButton"
+import { ToggleButton } from "@/components/atoms/ToggleButton"
 import { PERIOD } from "@/constants"
 import { createStyleSheet } from "@/styles/theme"
 import { Period } from "@/types/period"
@@ -29,7 +29,7 @@ export const PeriodButtonsCard: FC<Props> = ({
     <Card>
       <View style={styles.container}>
         {periodButtonDefs.map(({ label, value }) => (
-          <PeriodButton
+          <ToggleButton
             key={value}
             containerStyle={styles.buttonWrapper}
             label={label}

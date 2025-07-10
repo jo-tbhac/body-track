@@ -1,8 +1,8 @@
 import { FC } from "react"
 import { TextStyle, View, ViewStyle } from "react-native"
 
+import { Button } from "@/components/atoms/Button"
 import { Card } from "@/components/atoms/Card"
-import { SubmitButton } from "@/components/atoms/SubmitButton"
 import { Typography } from "@/components/atoms/Typography"
 import { RecordInputItem } from "@/components/molecules/RecordInputItem"
 import { createStyleSheet } from "@/styles/theme"
@@ -21,7 +21,7 @@ export const RecordInputCard: FC = () => {
         <RecordInputItem label="体重（kg）" />
         <RecordInputItem label="体脂肪率（%）" />
         <View style={styles.buttonContainer}>
-          <SubmitButton label="記録を保存" onPress={() => {}} />
+          <Button label="記録を保存" onPress={() => {}} />
         </View>
       </View>
     </Card>
