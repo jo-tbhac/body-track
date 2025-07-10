@@ -129,7 +129,7 @@ const useStyles = createStyleSheet((theme) => ({
     color: theme.colors.text.inverse,
   } satisfies TextStyle,
   secondaryButton: {
-    backgroundColor: theme.colors.neutral[200],
+    backgroundColor: theme.colors.neutral[100],
   } satisfies ViewStyle,
   secondaryButtonLabel: {
     color: theme.colors.text.secondary,
