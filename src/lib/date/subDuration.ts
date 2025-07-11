@@ -1,10 +1,10 @@
-import { add } from "date-fns"
+import { sub } from "date-fns"
 
 import { Duration } from "./types"
 
-export const addDuration = (
+export const subDuration = (
   date: Date | string | number,
   duration: Duration,
 ) => {
-  return add(date, duration)
+  return sub(date, duration)
 }
