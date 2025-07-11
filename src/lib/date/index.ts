@@ -1,2 +1,2 @@
 export * from "./addDuration"
-export * from "./format"
+export * from "./formatDate"
