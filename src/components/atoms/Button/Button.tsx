@@ -149,9 +149,9 @@ const useStyles = createStyleSheet((theme) => ({
     paddingVertical: theme.spacing[1],
   } satisfies ViewStyle,
   mediumButtonLabel: {
-    fontSize: theme.fontSize.sm,
+    fontSize: theme.fontSize.base,
   } satisfies TextStyle,
   smallButtonLabel: {
-    fontSize: theme.fontSize.xs,
+    fontSize: theme.fontSize.sm,
   } satisfies TextStyle,
 }))
