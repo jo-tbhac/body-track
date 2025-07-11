@@ -1,6 +1,6 @@
-import Entypo from "@expo/vector-icons/Entypo"
 import { Tabs } from "expo-router/tabs"
 
+import { HomeIcon, LineGraphIcon } from "@/lib/icons"
 import { useTheme } from "@/styles/theme"
 
 export default function TabLayout() {
@@ -17,18 +17,14 @@ export default function TabLayout() {
         name="(home-stack)"
         options={{
           tabBarLabel: "ホーム",
-          tabBarIcon: ({ color }) => (
-            <Entypo name="home" size={24} color={color} />
-          ),
+          tabBarIcon: ({ color }) => <HomeIcon size={24} color={color} />,
         }}
       />
       <Tabs.Screen
         name="chart/index"
         options={{
           tabBarLabel: "グラフ",
-          tabBarIcon: ({ color }) => (
-            <Entypo name="line-graph" size={24} color={color} />
-          ),
+          tabBarIcon: ({ color }) => <LineGraphIcon size={24} color={color} />,
         }}
       />
     </Tabs>
