@@ -3,6 +3,7 @@ import { Slot } from "expo-router"
 import * as SplashScreen from "expo-splash-screen"
 import { useEffect } from "react"
 
+import { DbProvider } from "@/db/DbProvider"
 import { PortalProvider } from "@/lib/portal"
 import { ThemeProvider } from "@/styles/ThemeProvider"
 import { fontMap } from "@/styles/font"
@@ -29,10 +30,12 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider>
-      <PortalProvider>
-        <Slot />
-      </PortalProvider>
-    </ThemeProvider>
+    <DbProvider>
+      <ThemeProvider>
+        <PortalProvider>
+          <Slot />
+        </PortalProvider>
+      </ThemeProvider>
+    </DbProvider>
   )
 }

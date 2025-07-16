@@ -14,7 +14,8 @@
     "cspell": "cspell -c ./.cspell/cspell.json .",
     "tsc:lib:eslint": "tsc --project ./lib/eslint/tsconfig.eslint.json",
     "test:lib:eslint": "node --experimental-strip-types --import ./lib/eslint/setup-test.js --test **/*.test.ts",
-    "scaffdog:gen": "scaffdog generate"
+    "scaffdog:gen": "scaffdog generate",
+    "migration:generate": "drizzle-kit generate"
   },
   "dependencies": {
     "@expo-google-fonts/noto-sans-jp": "^0.4.0",
@@ -23,6 +24,7 @@
     "@react-navigation/bottom-tabs": "^7.3.10",
     "@react-navigation/elements": "^2.3.8",
     "@react-navigation/native": "^7.1.6",
+    "babel-plugin-inline-import": "^3.0.0",
     "date-fns": "^4.1.0",
     "drizzle-orm": "^0.44.3",
     "expo": "^53.0.19",
