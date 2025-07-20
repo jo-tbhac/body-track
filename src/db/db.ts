@@ -7,16 +7,12 @@ import { createContext, useContext, useEffect } from "react"
 import migrations from "../../drizzle/migrations"
 
 const expo = SQLite.openDatabaseSync("db.db")
-export const db = drizzle(expo)
+const db = drizzle(expo)
 
 type Db = typeof db
 
 export const DbContext = createContext<Db | null>(null)
 export const useDb = (): Db | null => useContext(DbContext)
-
-export const useDbViewer = () => {
-  useDrizzleStudio(expo)
-}
 
 type UseInitializeDbResult = [Db, true] | [null, false]
 
