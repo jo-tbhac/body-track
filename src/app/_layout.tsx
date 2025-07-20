@@ -1,41 +1,36 @@
-import { useFonts } from "@expo-google-fonts/noto-sans-jp"
 import { Slot } from "expo-router"
 import * as SplashScreen from "expo-splash-screen"
 import { useEffect } from "react"
 
-import { DbProvider } from "@/db/DbProvider"
+import { DbContext, useInitializeDb } from "@/db/db"
 import { PortalProvider } from "@/lib/portal"
 import { ThemeProvider } from "@/styles/ThemeProvider"
-import { fontMap } from "@/styles/font"
+import { useFonts } from "@/styles/font"
 
 SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
-  const [loaded, error] = useFonts(fontMap)
+  const fontsLoaded = useFonts()
+
+  const [db, dbReady] = useInitializeDb()
 
   useEffect(() => {
-    if (loaded) {
+    if (fontsLoaded && dbReady) {
       SplashScreen.hideAsync()
     }
-  }, [loaded])
+  }, [dbReady, fontsLoaded])
 
-  useEffect(() => {
-    if (error) {
-      console.error("[Error] failed to load fonts: ", error)
-    }
-  }, [error])
-
-  if (!loaded) {
+  if (!fontsLoaded || !dbReady) {
     return null
   }
 
   return (
-    <DbProvider>
+    <DbContext.Provider value={db}>
       <ThemeProvider>
         <PortalProvider>
           <Slot />
         </PortalProvider>
       </ThemeProvider>
-    </DbProvider>
+    </DbContext.Provider>
   )
 }

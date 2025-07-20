@@ -8,7 +8,9 @@ import {
   NotoSansJP_700Bold,
   NotoSansJP_800ExtraBold,
   NotoSansJP_900Black,
+  useFonts as useNotoSansFonts,
 } from "@expo-google-fonts/noto-sans-jp"
+import { useEffect } from "react"
 
 export const FONT_FAMILY = {
   NotoSansJP_100: "NotoSansJP_100",
@@ -24,7 +26,7 @@ export const FONT_FAMILY = {
 
 export type FontFamily = (typeof FONT_FAMILY)[keyof typeof FONT_FAMILY]
 
-export const fontMap: Record<FontFamily, number> = {
+const fontMap: Record<FontFamily, number> = {
   NotoSansJP_100: NotoSansJP_100Thin,
   NotoSansJP_200: NotoSansJP_200ExtraLight,
   NotoSansJP_300: NotoSansJP_300Light,
@@ -50,3 +52,25 @@ export const FONT_SIZE = {
 } as const
 
 export type FontSize = (typeof FONT_SIZE)[keyof typeof FONT_SIZE]
+
+type UseFontsResult = boolean
+
+export const useFonts = (): UseFontsResult => {
+  const [loaded, error] = useNotoSansFonts(fontMap)
+
+  useEffect(() => {
+    if (error) {
+      console.error("[Error] Failed to load fonts: ", error)
+    }
+  }, [error])
+
+  useEffect(() => {
+    if (loaded) {
+      console.log("[INFO] Fonts are loaded.")
+      return
+    }
+    console.log("[INFO] Loading fonts.")
+  }, [loaded])
+
+  return loaded
+}
