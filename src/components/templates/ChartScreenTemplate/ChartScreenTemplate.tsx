@@ -4,7 +4,7 @@ import { View, ViewStyle } from "react-native"
 import { PeriodButtonsCard } from "@/components/organisms/PeriodButtonsCard"
 import { PERIOD } from "@/constants"
 import { createStyleSheet } from "@/styles/theme"
-import { Period } from "@/types/period"
+import { Period } from "@/types"
 
 export const ChartScreenTemplate: FC = () => {
   const styles = useStyles()

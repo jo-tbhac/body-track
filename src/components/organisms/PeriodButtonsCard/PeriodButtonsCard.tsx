@@ -5,7 +5,7 @@ import { Card } from "@/components/atoms/Card"
 import { ToggleButton } from "@/components/atoms/ToggleButton"
 import { PERIOD } from "@/constants"
 import { createStyleSheet } from "@/styles/theme"
-import { Period } from "@/types/period"
+import { Period } from "@/types"
 
 interface Props {
   selectedPeriod: Period
