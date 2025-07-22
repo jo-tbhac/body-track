@@ -1,21 +1,18 @@
 import { FC } from "react"
-import {
-  TextStyle,
-  TouchableOpacity,
-  TouchableOpacityProps,
-  ViewStyle,
-} from "react-native"
+import { TextStyle, TouchableOpacity, ViewStyle } from "react-native"
 
 import { Card } from "@/components/atoms/Card"
 import { Typography } from "@/components/atoms/Typography"
 import { createStyleSheet } from "@/styles/theme"
+import { TimeOfDay } from "@/types"
 
 interface Props {
   label: string
   weight: number
   bodyFatRate: number
   bmi: number
-  onPress: TouchableOpacityProps["onPress"]
+  timeOfDay: TimeOfDay
+  handlePressWeightEntry: (timeOfDay: TimeOfDay) => void
 }
 
 export const WeightEntry: FC<Props> = ({
@@ -23,9 +20,14 @@ export const WeightEntry: FC<Props> = ({
   weight,
   bodyFatRate,
   bmi,
-  onPress,
+  timeOfDay,
+  handlePressWeightEntry,
 }) => {
   const styles = useStyles()
+
+  const onPress = () => {
+    handlePressWeightEntry(timeOfDay)
+  }
 
   return (
     <TouchableOpacity style={styles.wrapper} onPress={onPress}>

@@ -6,9 +6,11 @@ import { Card } from "@/components/atoms/Card"
 import { DatePicker } from "@/components/atoms/DatePicker"
 import { Typography } from "@/components/atoms/Typography"
 import { WeightEntry } from "@/components/molecules/WeightEntry"
+import { TIME_OF_DAY } from "@/constants"
 import { addDuration, formatDate, subDuration } from "@/lib/date"
 import { ChevronLeftIcon, ChevronRightIcon } from "@/lib/icons"
 import { createStyleSheet, useTheme } from "@/styles/theme"
+import { TimeOfDay } from "@/types"
 
 export const DailyRecordCard: FC = () => {
   const { colors, fontSize } = useTheme()
@@ -24,8 +26,14 @@ export const DailyRecordCard: FC = () => {
     return formatDate(selectedDate, `yyy年M月d日の記録`)
   }, [selectedDate])
 
-  const handlePressWeightEntry = () => {
-    router.navigate("/record-input")
+  const handlePressWeightEntry = (timeOfDay: TimeOfDay) => {
+    router.navigate({
+      pathname: "/record-input",
+      params: {
+        dateString: formatDate(selectedDate, "yyyy-MM-dd"),
+        timeOfDay,
+      },
+    })
   }
 
   const handlePressDate = () => {
@@ -83,14 +91,16 @@ export const DailyRecordCard: FC = () => {
             weight={64.0}
             bodyFatRate={16.0}
             bmi={19.0}
-            onPress={handlePressWeightEntry}
+            timeOfDay={TIME_OF_DAY.morning}
+            handlePressWeightEntry={handlePressWeightEntry}
           />
           <WeightEntry
             label="夜の体重"
             weight={64.0}
             bodyFatRate={16.0}
             bmi={19.0}
-            onPress={handlePressWeightEntry}
+            timeOfDay={TIME_OF_DAY.evening}
+            handlePressWeightEntry={handlePressWeightEntry}
           />
         </View>
       </Card>

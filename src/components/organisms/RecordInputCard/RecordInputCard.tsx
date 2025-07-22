@@ -1,20 +1,34 @@
-import { FC } from "react"
+import { FC, useMemo } from "react"
 import { TextStyle, View, ViewStyle } from "react-native"
 
 import { Button } from "@/components/atoms/Button"
 import { Card } from "@/components/atoms/Card"
 import { Typography } from "@/components/atoms/Typography"
 import { RecordInputItem } from "@/components/molecules/RecordInputItem"
+import { TIME_OF_DAY } from "@/constants"
+import { formatDate } from "@/lib/date"
 import { createStyleSheet } from "@/styles/theme"
+import { TimeOfDay } from "@/types"
 
-export const RecordInputCard: FC = () => {
+interface Props {
+  selectedDate: Date
+  timeOfDay: TimeOfDay
+}
+
+export const RecordInputCard: FC<Props> = ({ selectedDate, timeOfDay }) => {
   const styles = useStyles()
+
+  const title = useMemo(() => {
+    const timeOfDayLabel = timeOfDay === TIME_OF_DAY.morning ? "朝" : "夜"
+
+    return formatDate(selectedDate, `yyy年M月d日 ${timeOfDayLabel}の体重を記録`)
+  }, [selectedDate, timeOfDay])
 
   return (
     <Card>
       <View style={styles.cardTop}>
         <Typography bold style={styles.cardTitle}>
-          XXの体重を記録
+          {title}
         </Typography>
       </View>
       <View style={styles.cardBottom}>
