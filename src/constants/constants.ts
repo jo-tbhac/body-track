@@ -4,3 +4,8 @@ export const PERIOD = {
   "3months": "3months",
   "6months": "6months",
 } as const
+
+export const TIME_OF_DAY = {
+  morning: "morning",
+  evening: "evening",
+} as const
