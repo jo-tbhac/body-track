@@ -5,5 +5,8 @@ export const weightRecordsTable = sqliteTable("weight_records", {
   id: int().primaryKey({ autoIncrement: true }),
   weight: real(),
   bodyFatRate: real("body_fat_rate"),
-  measuredAt: text("measured_at").default(sql`(CURRENT_TIMESTAMP)`),
+  measuredAt: text("measured_at")
+    .default(sql`(CURRENT_TIMESTAMP)`)
+    .notNull(),
+  timeOfDay: text("time_of_day").notNull(),
 })
