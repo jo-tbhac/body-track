@@ -1,3 +1,4 @@
+import { useForm } from "@tanstack/react-form"
 import { FC, useMemo } from "react"
 import { TextStyle, View, ViewStyle } from "react-native"
 
@@ -10,6 +11,13 @@ import { formatDate } from "@/lib/date"
 import { createStyleSheet } from "@/styles/theme"
 import { TimeOfDay } from "@/types"
 
+import { FormSchema, formSchema } from "./schema"
+
+const defaultValues: FormSchema = {
+  weight: "",
+  bodyFatRate: "",
+}
+
 interface Props {
   selectedDate: Date
   timeOfDay: TimeOfDay
@@ -18,11 +26,25 @@ interface Props {
 export const RecordInputCard: FC<Props> = ({ selectedDate, timeOfDay }) => {
   const styles = useStyles()
 
+  const form = useForm({
+    defaultValues,
+    onSubmit: ({ value }) => {
+      console.log("value: ", value)
+    },
+    validators: {
+      onChange: formSchema,
+    },
+  })
+
   const title = useMemo(() => {
     const timeOfDayLabel = timeOfDay === TIME_OF_DAY.morning ? "朝" : "夜"
 
     return formatDate(selectedDate, `yyy年M月d日 ${timeOfDayLabel}の体重を記録`)
   }, [selectedDate, timeOfDay])
+
+  const handlePressSaveButton = () => {
+    form.handleSubmit()
+  }
 
   return (
     <Card>
@@ -32,10 +54,28 @@ export const RecordInputCard: FC<Props> = ({ selectedDate, timeOfDay }) => {
         </Typography>
       </View>
       <View style={styles.cardBottom}>
-        <RecordInputItem label="体重（kg）" />
-        <RecordInputItem label="体脂肪率（%）" />
+        <form.Field name="weight">
+          {({ state, handleChange }) => (
+            <RecordInputItem
+              label="体重（kg）"
+              value={state.value}
+              handleChangeValue={(newValue) => handleChange(newValue)}
+              errorMessage={state.meta.errors[0]?.message}
+            />
+          )}
+        </form.Field>
+        <form.Field name="bodyFatRate">
+          {({ state, handleChange }) => (
+            <RecordInputItem
+              label="体脂肪率（%）"
+              value={state.value}
+              handleChangeValue={(newValue) => handleChange(newValue)}
+              errorMessage={state.meta.errors[0]?.message}
+            />
+          )}
+        </form.Field>
         <View style={styles.buttonContainer}>
-          <Button label="記録を保存" onPress={() => {}} />
+          <Button label="記録を保存" onPress={handlePressSaveButton} />
         </View>
       </View>
     </Card>

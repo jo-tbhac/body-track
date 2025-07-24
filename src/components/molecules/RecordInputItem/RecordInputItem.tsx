@@ -7,9 +7,17 @@ import { createStyleSheet } from "@/styles/theme"
 
 interface Props {
   label: string
+  value: string
+  handleChangeValue: (newValue: string) => void
+  errorMessage?: string
 }
 
-export const RecordInputItem: FC<Props> = ({ label }) => {
+export const RecordInputItem: FC<Props> = ({
+  label,
+  value,
+  handleChangeValue,
+  errorMessage,
+}) => {
   const styles = useStyles()
 
   return (
@@ -17,7 +25,15 @@ export const RecordInputItem: FC<Props> = ({ label }) => {
       <Typography bold style={styles.label}>
         {label}
       </Typography>
-      <TextInput style={styles.input} inputMode="decimal" />
+      <TextInput
+        style={styles.input}
+        inputMode="decimal"
+        value={value}
+        onChangeText={handleChangeValue}
+      />
+      {errorMessage != null && (
+        <Typography style={styles.errorMessage}>{errorMessage}</Typography>
+      )}
     </View>
   )
 }
@@ -34,5 +50,11 @@ const useStyles = createStyleSheet((theme) => ({
   } satisfies TextStyle,
   input: {
     textAlign: "center",
+  } satisfies TextStyle,
+  errorMessage: {
+    color: theme.colors.semantic.error,
+    fontSize: theme.fontSize.sm,
+    marginLeft: theme.spacing[1],
+    marginTop: theme.spacing[1],
   } satisfies TextStyle,
 }))
