@@ -9,3 +9,5 @@ export const TIME_OF_DAY = {
   morning: "morning",
   evening: "evening",
 } as const
+
+export const ALLOWED_CHAR_PATTERN_FOR_WEIGHT_INPUT = /^(?:\d+\.?\d*|\.\d+)$/
