@@ -7,7 +7,12 @@ import { DatePicker } from "@/components/atoms/DatePicker"
 import { Typography } from "@/components/atoms/Typography"
 import { WeightEntry } from "@/components/molecules/WeightEntry"
 import { TIME_OF_DAY } from "@/constants"
-import { addDuration, formatDate, subDuration } from "@/lib/date"
+import {
+  addDuration,
+  DATE_STRING_FORMAT,
+  formatDate,
+  subDuration,
+} from "@/lib/date"
 import { ChevronLeftIcon, ChevronRightIcon } from "@/lib/icons"
 import { createStyleSheet, useTheme } from "@/styles/theme"
 import { TimeOfDay } from "@/types"
@@ -30,7 +35,7 @@ export const DailyRecordCard: FC = () => {
     router.navigate({
       pathname: "/record-input",
       params: {
-        dateString: formatDate(selectedDate, "yyyy-MM-dd"),
+        dateString: formatDate(selectedDate, DATE_STRING_FORMAT),
         timeOfDay,
       },
     })

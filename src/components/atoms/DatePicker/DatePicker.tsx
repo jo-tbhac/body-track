@@ -3,7 +3,7 @@ import { Modal, View, ViewStyle } from "react-native"
 import { Calendar, DateData, LocaleConfig } from "react-native-calendars"
 
 import { Button } from "@/components/atoms/Button"
-import { formatDate } from "@/lib/date"
+import { DATE_STRING_FORMAT, formatDate } from "@/lib/date"
 import { Portal } from "@/lib/portal"
 import { createStyleSheet, useTheme } from "@/styles/theme"
 
@@ -46,7 +46,7 @@ export const DatePicker: FC<Props> = ({
   const { colors, fontFamily, fontSize } = useTheme()
 
   const [selectedDate, setSelectedDate] = useState(() => {
-    return formatDate(defaultDate, "yyyy-MM-dd")
+    return formatDate(defaultDate, DATE_STRING_FORMAT)
   })
 
   const handleChangeDate = (dateData: DateData) => {

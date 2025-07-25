@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react"
 
 import { useDb, weightRecordsTable } from "@/db"
-import { formatDate } from "@/lib/date"
+import { DATE_STRING_FORMAT, formatDate } from "@/lib/date"
 import { TimeOfDay } from "@/types"
 
 interface CreateWeightRecordParams {
@@ -29,7 +29,7 @@ export const useSaveWeightRecord = (): UseCreateWeightRecordReturn => {
 
       setSaving(true)
       const { measuredDate, ...rest } = params
-      const measuredDateString = formatDate(measuredDate, "yyyy-MM-dd")
+      const measuredDateString = formatDate(measuredDate, DATE_STRING_FORMAT)
 
       await db
         .insert(weightRecordsTable)
