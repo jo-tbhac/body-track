@@ -22,7 +22,7 @@ export const useFindWeightRecordByDateTime = ({
   const db = useDb()
 
   useEffect(() => {
-    if (!result.loading || db == null || result.data != null) {
+    if (db == null) {
       return
     }
 
@@ -53,7 +53,7 @@ export const useFindWeightRecordByDateTime = ({
 
       setResult({ data, loading: false })
     })()
-  }, [db, measuredDate, result.data, result.loading, timeOfDay])
+  }, [db, measuredDate, timeOfDay])
 
   return [result.data, result.loading]
 }
