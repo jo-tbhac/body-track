@@ -76,14 +76,14 @@ export const DailyRecordCard: FC = () => {
               style={styles.iconButton}
               onPress={handlePressPrevButton}
             >
-              <ChevronLeftIcon size={fontSize.xl} color={colors.text.inverse} />
+              <ChevronLeftIcon size={fontSize.lg} color={colors.text.inverse} />
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.iconButton}
               onPress={handlePressNextButton}
             >
               <ChevronRightIcon
-                size={fontSize.xl}
+                size={fontSize.lg}
                 color={colors.text.inverse}
               />
             </TouchableOpacity>

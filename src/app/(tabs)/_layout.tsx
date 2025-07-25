@@ -17,14 +17,14 @@ export default function TabLayout() {
         name="(home-stack)"
         options={{
           tabBarLabel: "ホーム",
-          tabBarIcon: ({ color }) => <HomeIcon size={24} color={color} />,
+          tabBarIcon: ({ color }) => <HomeIcon size={22} color={color} />,
         }}
       />
       <Tabs.Screen
         name="chart/index"
         options={{
           tabBarLabel: "グラフ",
-          tabBarIcon: ({ color }) => <LineGraphIcon size={24} color={color} />,
+          tabBarIcon: ({ color }) => <LineGraphIcon size={22} color={color} />,
         }}
       />
     </Tabs>
