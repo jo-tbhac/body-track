@@ -1,0 +1,51 @@
+import { useCallback, useState } from "react"
+
+import { useDb, weightRecordsTable } from "@/db"
+import { formatDate } from "@/lib/date"
+import { TimeOfDay } from "@/types"
+
+interface CreateWeightRecordParams {
+  weight: number | null
+  bodyFatRate: number | null
+  measuredDate: Date
+  timeOfDay: TimeOfDay
+}
+
+type UseCreateWeightRecordReturn = [
+  (params: CreateWeightRecordParams) => Promise<void>,
+  boolean,
+]
+
+export const useSaveWeightRecord = (): UseCreateWeightRecordReturn => {
+  const db = useDb()
+
+  const [saving, setSaving] = useState(false)
+
+  const saveWeightRecord = useCallback(
+    async (params: CreateWeightRecordParams) => {
+      if (db == null) {
+        return
+      }
+
+      setSaving(true)
+      const { measuredDate, ...rest } = params
+      const measuredDateString = formatDate(measuredDate, "yyyy-MM-dd")
+
+      await db
+        .insert(weightRecordsTable)
+        .values({ measuredDate: measuredDateString, ...rest })
+        .onConflictDoUpdate({
+          target: [
+            weightRecordsTable.measuredDate,
+            weightRecordsTable.timeOfDay,
+          ],
+          set: { weight: rest.weight, bodyFatRate: rest.bodyFatRate },
+        })
+
+      setSaving(false)
+    },
+    [db],
+  )
+
+  return [saveWeightRecord, saving]
+}

@@ -1,4 +1,5 @@
 import { useForm } from "@tanstack/react-form"
+import { useRouter } from "expo-router"
 import { FC, useMemo } from "react"
 import { TextStyle, View, ViewStyle } from "react-native"
 
@@ -12,6 +13,7 @@ import { createStyleSheet } from "@/styles/theme"
 import { TimeOfDay } from "@/types"
 
 import { FormSchema, formSchema } from "./schema"
+import { useSaveWeightRecord } from "./useSaveWeightRecord"
 
 const defaultValues: FormSchema = {
   weight: "",
@@ -26,10 +28,20 @@ interface Props {
 export const RecordInputCard: FC<Props> = ({ selectedDate, timeOfDay }) => {
   const styles = useStyles()
 
+  const router = useRouter()
+
+  const [saveWeightRecord] = useSaveWeightRecord()
+
   const form = useForm({
     defaultValues,
-    onSubmit: ({ value }) => {
-      console.log("value: ", value)
+    onSubmit: async ({ value }) => {
+      await saveWeightRecord({
+        weight: value.weight ? Number(value.weight) : null,
+        bodyFatRate: value.bodyFatRate ? Number(value.bodyFatRate) : null,
+        measuredDate: selectedDate,
+        timeOfDay,
+      })
+      router.back()
     },
     validators: {
       onChange: formSchema,
