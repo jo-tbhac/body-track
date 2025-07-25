@@ -8,12 +8,12 @@ import { Card } from "@/components/atoms/Card"
 import { Typography } from "@/components/atoms/Typography"
 import { RecordInputItem } from "@/components/molecules/RecordInputItem"
 import { TIME_OF_DAY } from "@/constants"
+import { useSaveWeightRecord } from "@/hooks/weightRecord/useSaveWeightRecord"
 import { formatDate } from "@/lib/date"
 import { createStyleSheet } from "@/styles/theme"
 import { TimeOfDay } from "@/types"
 
 import { FormSchema, formSchema } from "./schema"
-import { useSaveWeightRecord } from "./useSaveWeightRecord"
 
 interface Props {
   selectedDate: Date

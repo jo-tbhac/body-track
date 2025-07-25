@@ -3,10 +3,9 @@ import { FC, useMemo } from "react"
 import { View, ViewStyle } from "react-native"
 
 import { RecordInputCard } from "@/components/organisms/RecordInputCard"
+import { useFindWeightRecordByDateTime } from "@/hooks/weightRecord/useFindWeightRecordByDateTime"
 import { createStyleSheet } from "@/styles/theme"
 import { TimeOfDay } from "@/types"
-
-import { useFindWeightRecordByDateTime } from "./useFindWeightRecordByDateTime"
 
 export const RecordInputTemplate: FC = () => {
   const styles = useStyles()
