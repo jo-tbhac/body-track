@@ -1,7 +1,7 @@
 import { sql } from "drizzle-orm"
 import { int, real, sqliteTable, text, unique } from "drizzle-orm/sqlite-core"
 
-import { TIME_OF_DAY } from "@/constants"
+import { SEX, TIME_OF_DAY } from "@/constants"
 
 export const weightRecordsTable = sqliteTable(
   "weight_records",
@@ -18,3 +18,10 @@ export const weightRecordsTable = sqliteTable(
   },
   (t) => [unique().on(t.measuredDate, t.timeOfDay)],
 )
+
+export const profilesTable = sqliteTable("profiles", {
+  id: int().primaryKey({ autoIncrement: true }),
+  birthday: text().notNull(),
+  sex: text({ enum: [SEX.male, SEX.female] }).notNull(),
+  height: int().notNull(),
+})
