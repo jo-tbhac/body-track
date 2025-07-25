@@ -6,6 +6,8 @@ import { RecordInputCard } from "@/components/organisms/RecordInputCard"
 import { createStyleSheet } from "@/styles/theme"
 import { TimeOfDay } from "@/types"
 
+import { useFindWeightRecordByDateTime } from "./useFindWeightRecordByDateTime"
+
 export const RecordInputTemplate: FC = () => {
   const styles = useStyles()
 
@@ -18,9 +20,27 @@ export const RecordInputTemplate: FC = () => {
     return new Date(dateString)
   }, [dateString])
 
+  const [weightRecord, loading] = useFindWeightRecordByDateTime({
+    timeOfDay,
+    measuredDate: selectedDate,
+  })
+
+  if (loading) {
+    return null
+  }
+
+  const defaultFormValue = {
+    weight: weightRecord != null ? String(weightRecord.weight) : "",
+    bodyFatRate: weightRecord != null ? String(weightRecord.bodyFatRate) : "",
+  }
+
   return (
     <View style={styles.container}>
-      <RecordInputCard selectedDate={selectedDate} timeOfDay={timeOfDay} />
+      <RecordInputCard
+        selectedDate={selectedDate}
+        timeOfDay={timeOfDay}
+        defaultFormValue={defaultFormValue}
+      />
     </View>
   )
 }

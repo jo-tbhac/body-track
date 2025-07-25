@@ -15,17 +15,17 @@ import { TimeOfDay } from "@/types"
 import { FormSchema, formSchema } from "./schema"
 import { useSaveWeightRecord } from "./useSaveWeightRecord"
 
-const defaultValues: FormSchema = {
-  weight: "",
-  bodyFatRate: "",
-}
-
 interface Props {
   selectedDate: Date
   timeOfDay: TimeOfDay
+  defaultFormValue: FormSchema
 }
 
-export const RecordInputCard: FC<Props> = ({ selectedDate, timeOfDay }) => {
+export const RecordInputCard: FC<Props> = ({
+  selectedDate,
+  timeOfDay,
+  defaultFormValue,
+}) => {
   const styles = useStyles()
 
   const router = useRouter()
@@ -33,7 +33,7 @@ export const RecordInputCard: FC<Props> = ({ selectedDate, timeOfDay }) => {
   const [saveWeightRecord] = useSaveWeightRecord()
 
   const form = useForm({
-    defaultValues,
+    defaultValues: defaultFormValue,
     onSubmit: async ({ value }) => {
       await saveWeightRecord({
         weight: value.weight ? Number(value.weight) : null,
