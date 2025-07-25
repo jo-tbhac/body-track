@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "35fe7f3d-0189-4a8c-821c-9acffd24d7d7",
+  "id": "b236fdf9-3f9d-4696-92ad-ba2f44a64284",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "weight_records": {
@@ -28,13 +28,13 @@
           "notNull": false,
           "autoincrement": false
         },
-        "measured_at": {
-          "name": "measured_at",
+        "measured_date": {
+          "name": "measured_date",
           "type": "text",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false,
-          "default": "(CURRENT_TIMESTAMP)"
+          "default": "(CURRENT_DATE)"
         },
         "time_of_day": {
           "name": "time_of_day",
