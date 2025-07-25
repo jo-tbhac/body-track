@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX `weight_records_measured_date_time_of_day_unique` ON `weight_records` (`measured_date`,`time_of_day`);

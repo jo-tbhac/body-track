@@ -8,6 +8,13 @@
       "when": 1753429332960,
       "tag": "0000_certain_jubilee",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1753429722752,
+      "tag": "0001_ordinary_giant_man",
+      "breakpoints": true
     }
   ]
 }
