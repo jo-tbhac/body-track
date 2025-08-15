@@ -1,9 +1,9 @@
 import { FC } from "react"
 import { TextStyle, View, ViewStyle } from "react-native"
 
+import { ErrorMessage } from "@/components/atoms/ErrorMessage"
 import { InputLabel } from "@/components/atoms/InputLabel"
 import { TextInput } from "@/components/atoms/TextInput"
-import { Typography } from "@/components/atoms/Typography"
 import { createStyleSheet } from "@/styles/theme"
 
 interface Props {
@@ -30,9 +30,7 @@ export const RecordInputItem: FC<Props> = ({
         value={value}
         onChangeText={handleChangeValue}
       />
-      {errorMessage != null && (
-        <Typography style={styles.errorMessage}>{errorMessage}</Typography>
-      )}
+      {errorMessage != null && <ErrorMessage message={errorMessage} />}
     </View>
   )
 }
@@ -43,11 +41,5 @@ const useStyles = createStyleSheet((theme) => ({
   } satisfies ViewStyle,
   input: {
     textAlign: "center",
-  } satisfies TextStyle,
-  errorMessage: {
-    color: theme.colors.semantic.error,
-    fontSize: theme.fontSize.sm,
-    marginLeft: theme.spacing[1],
-    marginTop: theme.spacing[1],
   } satisfies TextStyle,
 }))
