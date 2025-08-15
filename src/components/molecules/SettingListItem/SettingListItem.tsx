@@ -7,13 +7,14 @@ import { createStyleSheet } from "@/styles/theme"
 interface Props {
   Icon: ReactNode
   label: string
+  onPress: () => void
 }
 
-export const SettingListItem: FC<Props> = ({ Icon, label }) => {
+export const SettingListItem: FC<Props> = ({ Icon, label, onPress }) => {
   const styles = useStyles()
 
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
       <View style={styles.container}>
         {Icon}
         <Typography style={styles.label}>{label}</Typography>
