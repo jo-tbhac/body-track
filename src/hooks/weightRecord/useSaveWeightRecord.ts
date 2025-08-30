@@ -4,25 +4,25 @@ import { useDb, weightRecordsTable } from "@/db"
 import { DATE_STRING_FORMAT, formatDate } from "@/lib/date"
 import { TimeOfDay } from "@/types"
 
-interface CreateWeightRecordParams {
+interface SaveWeightRecordParams {
   weight: number | null
   bodyFatRate: number | null
   measuredDate: Date
   timeOfDay: TimeOfDay
 }
 
-type UseCreateWeightRecordReturn = [
-  (params: CreateWeightRecordParams) => Promise<void>,
+type UseSaveWeightRecordReturn = [
+  (params: SaveWeightRecordParams) => Promise<void>,
   boolean,
 ]
 
-export const useSaveWeightRecord = (): UseCreateWeightRecordReturn => {
+export const useSaveWeightRecord = (): UseSaveWeightRecordReturn => {
   const db = useDb()
 
   const [saving, setSaving] = useState(false)
 
   const saveWeightRecord = useCallback(
-    async (params: CreateWeightRecordParams) => {
+    async (params: SaveWeightRecordParams) => {
       if (db == null) {
         return
       }
