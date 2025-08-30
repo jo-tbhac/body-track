@@ -1,4 +1,5 @@
 export * from "./addDuration"
 export * from "./constants"
 export * from "./formatDate"
+export * from "./isInvalidDate"
 export * from "./subDuration"
