@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, Ref } from "react"
 import {
   TextInput as RNTextInput,
   TextInputProps,
@@ -7,7 +7,11 @@ import {
 
 import { createStyleSheet, useTheme } from "@/styles/theme"
 
-type Props = TextInputProps
+export type TextInputType = RNTextInput
+
+type Props = TextInputProps & {
+  ref?: Ref<TextInputType>
+}
 
 export const TextInput: FC<Props> = ({ style, ...rest }) => {
   const styles = useStyles()
