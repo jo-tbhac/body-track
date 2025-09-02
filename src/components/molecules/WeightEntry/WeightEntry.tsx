@@ -1,33 +1,49 @@
-import { FC } from "react"
+import { FC, useMemo } from "react"
 import { TextStyle, TouchableOpacity, ViewStyle } from "react-native"
 
 import { Card } from "@/components/atoms/Card"
 import { Typography } from "@/components/atoms/Typography"
+import { useFindProfile } from "@/hooks/profile/useFindProfile"
+import { useFindWeightRecordByDateTime } from "@/hooks/weightRecord/useFindWeightRecordByDateTime"
 import { createStyleSheet } from "@/styles/theme"
 import { TimeOfDay } from "@/types"
+import { calcBmi } from "@/utils/calcBmi"
 
 interface Props {
   label: string
-  weight: number
-  bodyFatRate: number
-  bmi: number
+  selectedDate: Date
   timeOfDay: TimeOfDay
   handlePressWeightEntry: (timeOfDay: TimeOfDay) => void
 }
 
 export const WeightEntry: FC<Props> = ({
   label,
-  weight,
-  bodyFatRate,
-  bmi,
+  selectedDate,
   timeOfDay,
   handlePressWeightEntry,
 }) => {
   const styles = useStyles()
 
+  const [profile] = useFindProfile()
+
+  const [weightRecord] = useFindWeightRecordByDateTime({
+    measuredDate: selectedDate,
+    timeOfDay,
+  })
+
+  const bmi = useMemo(() => {
+    if (profile == null || weightRecord?.weight == null) {
+      return "--"
+    }
+    return calcBmi({ height: profile.height, weight: weightRecord.weight })
+  }, [profile, weightRecord?.weight])
+
   const onPress = () => {
     handlePressWeightEntry(timeOfDay)
   }
+
+  const weight = weightRecord?.weight ?? "--"
+  const bodyFatRate = weightRecord?.bodyFatRate ?? "--"
 
   return (
     <TouchableOpacity style={styles.wrapper} onPress={onPress}>

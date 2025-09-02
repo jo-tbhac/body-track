@@ -41,7 +41,13 @@ export const RecordInputCard: FC<Props> = ({
         measuredDate: selectedDate,
         timeOfDay,
       })
-      router.back()
+      router.dismissTo({
+        pathname: "/home",
+        params: {
+          target: timeOfDay,
+          updatedAt: Date.now(),
+        },
+      })
     },
     validators: {
       onChange: formSchema,

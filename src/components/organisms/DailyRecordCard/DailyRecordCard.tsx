@@ -17,6 +17,8 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@/lib/icons"
 import { createStyleSheet, useTheme } from "@/styles/theme"
 import { TimeOfDay } from "@/types"
 
+import { useWeightEntryComponentKeys } from "./useWeightEntryComponentKeys"
+
 export const DailyRecordCard: FC = () => {
   const { colors, fontSize } = useTheme()
   const styles = useStyles()
@@ -30,6 +32,8 @@ export const DailyRecordCard: FC = () => {
   const dateLabel = useMemo(() => {
     return formatDate(selectedDate, `yyy年M月d日の記録`)
   }, [selectedDate])
+
+  const componentKeys = useWeightEntryComponentKeys()
 
   const handlePressWeightEntry = (timeOfDay: TimeOfDay) => {
     router.navigate({
@@ -92,18 +96,16 @@ export const DailyRecordCard: FC = () => {
 
         <View style={styles.cardBottom}>
           <WeightEntry
+            key={componentKeys.morning}
             label="朝の体重"
-            weight={64.0}
-            bodyFatRate={16.0}
-            bmi={19.0}
+            selectedDate={selectedDate}
             timeOfDay={TIME_OF_DAY.morning}
             handlePressWeightEntry={handlePressWeightEntry}
           />
           <WeightEntry
+            key={componentKeys.evening}
             label="夜の体重"
-            weight={64.0}
-            bodyFatRate={16.0}
-            bmi={19.0}
+            selectedDate={selectedDate}
             timeOfDay={TIME_OF_DAY.evening}
             handlePressWeightEntry={handlePressWeightEntry}
           />
