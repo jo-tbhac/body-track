@@ -13,3 +13,10 @@ export interface WeightRecord {
   measuredDate: Date
   timeOfDay: TimeOfDay
 }
+
+export interface Profile {
+  id: number
+  birthday: string
+  sex: Sex
+  height: number
+}

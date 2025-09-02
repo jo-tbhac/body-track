@@ -15,4 +15,5 @@ export const SEX = {
   female: "Female",
 } as const
 
+export const ALLOWED_CHAR_PATTERN_FOR_HEIGHT_INPUT = /^(?:\d+\.?\d*|\.\d+)$/
 export const ALLOWED_CHAR_PATTERN_FOR_WEIGHT_INPUT = /^(?:\d+\.?\d*|\.\d+)$/
