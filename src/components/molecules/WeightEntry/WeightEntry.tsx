@@ -7,7 +7,7 @@ import { useFindProfile } from "@/hooks/profile/useFindProfile"
 import { useFindWeightRecordByDateTime } from "@/hooks/weightRecord/useFindWeightRecordByDateTime"
 import { createStyleSheet } from "@/styles/theme"
 import { TimeOfDay } from "@/types"
-import { calcBmi } from "@/utils/calcBmi"
+import { calcBmi } from "@/usecase/calcBmi"
 
 interface Props {
   label: string
