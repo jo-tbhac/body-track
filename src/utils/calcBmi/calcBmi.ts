@@ -1,3 +1,5 @@
+import { Decimal } from "decimal.js"
+
 /**
  * BMIを計算する
  * @param height 身長（cm）
@@ -11,8 +13,8 @@ export const calcBmi = ({
   height: number
   weight: number
 }) => {
-  const heightInMeters = height / 100
-  const bmi = weight / (heightInMeters * heightInMeters)
+  const heightInMeters = new Decimal(height).dividedBy(100)
+  const bmi = new Decimal(weight).dividedBy(heightInMeters.pow(2))
 
-  return Math.round(bmi * 10) / 10
+  return bmi.toDecimalPlaces(1, Decimal.ROUND_HALF_UP).toNumber()
 }
