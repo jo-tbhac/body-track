@@ -52,7 +52,7 @@ export const useSearchWeightRecords = ({
 
       const data = weightRecords.map((record) => ({
         ...record,
-        measuredDate: new Date(weightRecords[0].measuredDate),
+        measuredDate: new Date(record.measuredDate),
       }))
 
       setResult({ data, loading: false })
