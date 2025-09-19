@@ -5,13 +5,17 @@ import { DailyRecordCard } from "@/components/organisms/DailyRecordCard"
 import { WeeklySummaryCard } from "@/components/organisms/WeeklySummaryCard"
 import { createStyleSheet } from "@/styles/theme"
 
+import { useSummaryCardComponentKey } from "./useSummaryCardComponentKey"
+
 export const HomeScreenTemplate: FC = () => {
   const styles = useStyles()
+
+  const componentKey = useSummaryCardComponentKey()
 
   return (
     <View style={styles.container}>
       <DailyRecordCard />
-      <WeeklySummaryCard />
+      <WeeklySummaryCard key={componentKey} />
     </View>
   )
 }
