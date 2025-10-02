@@ -1,6 +1,6 @@
 import { Tabs } from "expo-router/tabs"
 
-import { HomeIcon, LineGraphIcon, SettingIcon } from "@/lib/icons"
+import { HomeIcon, SettingIcon, UnorderedList } from "@/lib/icons"
 import { useTheme } from "@/styles/theme"
 
 export default function TabLayout() {
@@ -24,7 +24,7 @@ export default function TabLayout() {
         name="data-list/index"
         options={{
           tabBarLabel: "データ一覧",
-          tabBarIcon: ({ color }) => <LineGraphIcon size={22} color={color} />,
+          tabBarIcon: ({ color }) => <UnorderedList size={22} color={color} />,
         }}
       />
       <Tabs.Screen

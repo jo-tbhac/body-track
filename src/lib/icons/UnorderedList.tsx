@@ -5,6 +5,6 @@ import { BaseProps } from "./types"
 
 type Props = BaseProps
 
-export const LineGraphIcon: FC<Props> = ({ size, color }) => {
-  return <AntDesign name="linechart" size={size} color={color} />
+export const UnorderedList: FC<Props> = ({ size, color }) => {
+  return <AntDesign name="unordered-list" size={size} color={color} />
 }
