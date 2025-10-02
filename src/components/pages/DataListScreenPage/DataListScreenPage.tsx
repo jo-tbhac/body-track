@@ -9,7 +9,7 @@ export const DataListScreenPage: FC = () => {
   const styles = useStyles()
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} edges={["top"]}>
       <DataListScreenTemplate />
     </SafeAreaView>
   )
