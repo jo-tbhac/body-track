@@ -21,9 +21,9 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="chart/index"
+        name="data-list/index"
         options={{
-          tabBarLabel: "グラフ",
+          tabBarLabel: "データ一覧",
           tabBarIcon: ({ color }) => <LineGraphIcon size={22} color={color} />,
         }}
       />

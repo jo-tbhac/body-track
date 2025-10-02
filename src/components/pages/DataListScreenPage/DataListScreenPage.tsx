@@ -1,15 +1,15 @@
 import { FC } from "react"
 import { SafeAreaView, ViewStyle } from "react-native"
 
-import { ChartScreenTemplate } from "@/components/templates/ChartScreenTemplate"
+import { DataListScreenTemplate } from "@/components/templates/DataListScreenTemplate"
 import { createStyleSheet } from "@/styles/theme"
 
-export const ChartScreenPage: FC = () => {
+export const DataListScreenPage: FC = () => {
   const styles = useStyles()
 
   return (
     <SafeAreaView style={styles.container}>
-      <ChartScreenTemplate />
+      <DataListScreenTemplate />
     </SafeAreaView>
   )
 }
