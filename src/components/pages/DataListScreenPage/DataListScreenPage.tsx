@@ -1,5 +1,6 @@
 import { FC } from "react"
-import { SafeAreaView, ViewStyle } from "react-native"
+import { ViewStyle } from "react-native"
+import { SafeAreaView } from "react-native-safe-area-context"
 
 import { DataListScreenTemplate } from "@/components/templates/DataListScreenTemplate"
 import { createStyleSheet } from "@/styles/theme"
