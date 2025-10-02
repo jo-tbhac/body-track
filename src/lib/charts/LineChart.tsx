@@ -9,6 +9,12 @@ type Props = GiftedLineChartPropsType
 
 export type LineChartData = lineDataItem
 
+export interface ChartData {
+  label: string
+  value: number
+  yAxisLabelText?: string
+}
+
 export const LineChart: FC<Props> = (props) => {
   return <GiftedLineChart {...props} />
 }

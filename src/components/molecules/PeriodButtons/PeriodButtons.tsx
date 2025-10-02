@@ -1,7 +1,6 @@
-import { FC } from "react"
-import { View, ViewStyle } from "react-native"
+import { FC, useMemo } from "react"
+import { StyleSheet, View, ViewProps, ViewStyle } from "react-native"
 
-import { Card } from "@/components/atoms/Card"
 import { ToggleButton } from "@/components/atoms/ToggleButton"
 import { PERIOD } from "@/constants"
 import { createStyleSheet } from "@/styles/theme"
@@ -9,14 +8,23 @@ import { Period } from "@/types"
 
 interface Props {
   selectedPeriod: Period
+  containerStyle?: ViewProps["style"]
   handleChangePeriod: (newPeriod: Period) => void
 }
 
-export const PeriodButtonsCard: FC<Props> = ({
+export const PeriodButtons: FC<Props> = ({
   selectedPeriod,
+  containerStyle: overrideContainerStyle,
   handleChangePeriod,
 }) => {
   const styles = useStyles()
+
+  const containerStyle = useMemo(() => {
+    return StyleSheet.compose<ViewStyle, ViewStyle, ViewStyle>(
+      styles.container,
+      overrideContainerStyle,
+    )
+  }, [overrideContainerStyle, styles.container])
 
   const periodButtonDefs = [
     { label: "7日", value: PERIOD["7days"] },
@@ -26,21 +34,19 @@ export const PeriodButtonsCard: FC<Props> = ({
   ] as const
 
   return (
-    <Card>
-      <View style={styles.container}>
-        {periodButtonDefs.map(({ label, value }) => (
-          <ToggleButton
-            key={value}
-            containerStyle={styles.buttonWrapper}
-            label={label}
-            selected={selectedPeriod === value}
-            onPress={() => {
-              handleChangePeriod(value)
-            }}
-          />
-        ))}
-      </View>
-    </Card>
+    <View style={containerStyle}>
+      {periodButtonDefs.map(({ label, value }) => (
+        <ToggleButton
+          key={value}
+          containerStyle={styles.buttonWrapper}
+          label={label}
+          selected={selectedPeriod === value}
+          onPress={() => {
+            handleChangePeriod(value)
+          }}
+        />
+      ))}
+    </View>
   )
 }
 

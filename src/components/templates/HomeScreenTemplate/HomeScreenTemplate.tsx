@@ -2,6 +2,7 @@ import { FC } from "react"
 import { View, ViewStyle } from "react-native"
 
 import { DailyRecordCard } from "@/components/organisms/DailyRecordCard"
+import { TrendChartCard } from "@/components/organisms/TrendChartCard"
 import { WeeklySummaryCard } from "@/components/organisms/WeeklySummaryCard"
 import { createStyleSheet } from "@/styles/theme"
 
@@ -16,6 +17,7 @@ export const HomeScreenTemplate: FC = () => {
     <View style={styles.container}>
       <DailyRecordCard />
       <WeeklySummaryCard key={componentKey} />
+      <TrendChartCard />
     </View>
   )
 }
