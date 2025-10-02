@@ -1,4 +1,5 @@
 bodytrack
+codepaths
 Entypo
 gorhom
 linechart
@@ -7,3 +8,4 @@ Pressable
 scaffdog
 TSESTree
 usecase
+worklets
