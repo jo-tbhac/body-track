@@ -5,6 +5,7 @@ import { Card } from "@/components/atoms/Card"
 import { Typography } from "@/components/atoms/Typography"
 import { useFindProfile } from "@/hooks/profile/useFindProfile"
 import { useFindWeightRecordByDateTime } from "@/hooks/weightRecord/useFindWeightRecordByDateTime"
+import { numberFormat } from "@/lib/formatter"
 import { createStyleSheet } from "@/styles/theme"
 import { TimeOfDay } from "@/types"
 import { calcBmi } from "@/usecase/calcBmi"
@@ -33,32 +34,50 @@ export const WeightEntry: FC<Props> = ({
 
   const bmi = useMemo(() => {
     if (profile == null || weightRecord?.weight == null) {
-      return "--"
+      return null
     }
     return calcBmi({ height: profile.height, weight: weightRecord.weight })
   }, [profile, weightRecord?.weight])
 
+  const weightDisplayValue = useMemo(() => {
+    if (weightRecord?.weight == null) {
+      return "--"
+    }
+    return numberFormat(weightRecord.weight)
+  }, [weightRecord?.weight])
+
+  const bodyFatRateDisplayValue = useMemo(() => {
+    if (weightRecord?.bodyFatRate == null) {
+      return "--"
+    }
+    return numberFormat(weightRecord.bodyFatRate)
+  }, [weightRecord?.bodyFatRate])
+
+  const bmiDisplayValue = useMemo(() => {
+    if (bmi == null) {
+      return "--"
+    }
+    return numberFormat(bmi)
+  }, [bmi])
+
   const onPress = () => {
     handlePressWeightEntry(timeOfDay)
   }
-
-  const weight = weightRecord?.weight ?? "--"
-  const bodyFatRate = weightRecord?.bodyFatRate ?? "--"
 
   return (
     <TouchableOpacity style={styles.wrapper} onPress={onPress}>
       <Card style={styles.card}>
         <Typography style={styles.label}>{label}</Typography>
         <Typography bold style={styles.weight}>
-          {weight}{" "}
+          {weightDisplayValue}{" "}
           <Typography bold style={styles.weightUnit}>
             kg
           </Typography>
         </Typography>
         <Typography style={styles.bodyFatRate}>
-          体脂肪率: {bodyFatRate} %
+          体脂肪率: {bodyFatRateDisplayValue} %
         </Typography>
-        <Typography style={styles.bmi}>BMI: {bmi}</Typography>
+        <Typography style={styles.bmi}>BMI: {bmiDisplayValue}</Typography>
       </Card>
     </TouchableOpacity>
   )

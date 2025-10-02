@@ -10,6 +10,7 @@ import {
   useSearchWeightRecords,
 } from "@/hooks/weightRecord/useSearchWeightRecords"
 import { subDuration } from "@/lib/date"
+import { numberFormat } from "@/lib/formatter"
 import { createStyleSheet } from "@/styles/theme"
 import { calcAverageBmi } from "@/usecase/calcAverageBmi"
 import { calcAverageBodyFatRate } from "@/usecase/calcAverageBodyFatRate"
@@ -50,9 +51,26 @@ export const WeeklySummaryCard: FC = () => {
     return calcAverageBmi(profile.height, weightRecords)
   }, [weightRecords, profile])
 
-  const averageWeightLabel = averageWeight?.toFixed(1) ?? "--"
-  const averageBodyFatRateLabel = averageBodyFatRate?.toFixed(1) ?? "--"
-  const averageBmiLabel = averageBmi?.toFixed(1) ?? "--"
+  const weightDisplayValue = useMemo(() => {
+    if (averageWeight == null) {
+      return "--"
+    }
+    return numberFormat(averageWeight)
+  }, [averageWeight])
+
+  const bodyFatRateDisplayValue = useMemo(() => {
+    if (averageBodyFatRate == null) {
+      return "--"
+    }
+    return numberFormat(averageBodyFatRate)
+  }, [averageBodyFatRate])
+
+  const bmiDisplayValue = useMemo(() => {
+    if (averageBmi == null) {
+      return "--"
+    }
+    return numberFormat(averageBmi)
+  }, [averageBmi])
 
   return (
     <Card>
@@ -62,13 +80,13 @@ export const WeeklySummaryCard: FC = () => {
         </Typography>
       </View>
       <View style={styles.cardBottom}>
-        <SummaryItem label="平均体重" value={averageWeightLabel} unit="kg" />
+        <SummaryItem label="平均体重" value={weightDisplayValue} unit="kg" />
         <SummaryItem
           label="平均体脂肪率"
-          value={averageBodyFatRateLabel}
+          value={bodyFatRateDisplayValue}
           unit="%"
         />
-        <SummaryItem label="平均BMI" value={averageBmiLabel} />
+        <SummaryItem label="平均BMI" value={bmiDisplayValue} />
       </View>
     </Card>
   )
