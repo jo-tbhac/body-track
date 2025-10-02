@@ -1,6 +1,7 @@
 export * from "./ChevronLeftIcon"
 export * from "./ChevronRightIcon"
 export * from "./HomeIcon"
+export * from "./MoonIcon"
 export * from "./SettingIcon"
 export * from "./ThemeIcon"
 export * from "./UnorderedList"
