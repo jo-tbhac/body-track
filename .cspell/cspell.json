@@ -9,6 +9,13 @@
     }
   ],
   "dictionaries": ["project-words"],
-  "ignorePaths": ["node_modules", "project-words.txt", "app-example"],
+  "ignorePaths": [
+    "node_modules",
+    "project-words.txt",
+    "app-example",
+    "app.json",
+    "dist",
+    "drizzle"
+  ],
   "globRoot": ".."
 }
